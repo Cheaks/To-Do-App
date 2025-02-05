@@ -1,0 +1,72 @@
+//This mixin sets the position property of an element to absolute 
+//and sets the values of the top, bottom, right, and left properties based on the values passed as parameters.
+@mixin abselute ($top :null, $bottom:null, $right:null, $left :null) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}
+
+//This mixin sets the width and height of an element to the values specified by 
+//the $height and $width parameters, respectively.
+@mixin dementions($height:null, $width:null) {
+    width: $width;
+    height: $height;
+}
+
+//This mixin sets the font size and weight  and the color of an element.
+// The $size and $weight parameters are values that you can pass to the mixin to customize the font size and weight.
+@mixin font ($color:null, $size:null, $weight:null) {
+    font-size: $size+px;
+    font-weight: $weight;
+    color: $color;
+}
+
+// This mixin allows you to center an element 
+//horizontally and vertically within its parent container.
+@mixin centering {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//This mixin sets the background image of an element,
+// as well as its position, repeat, and size. The $url parameter is the URL of the image file,
+// and the $position, $repeat, and $size parameters are optional and have default 
+//values of center, no-repeat, and cover, respectively.
+@mixin bg-image($url, $position: center, $repeat: no-repeat, $size: cover) {
+    background-image: url($url);
+    background-position: $position;
+    background-repeat: $repeat;
+    background-size: $size;
+}
+
+//The blend-mode mixin allows you to easily set a blend mode between a background image and a background color
+//. It takes three parameters:
+@mixin blend-mode( $image, $mode, $colors...) {
+    background-color: rgba($colors...);
+    @include bg-image($image);
+    background-blend-mode: $mode;
+    mix-blend-mode: $mode;
+}
+
+//The flex-mode mixin is a helper for styling elements using the Flexbox layout. 
+//It takes three parameters:
+@mixin flexMode($gap:null, $align: center, $justify:center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap+px;
+}
+
+//This mixin creates a linear gradient background with multiple colors. 
+@mixin bg-line($deg:null, $colors...) {
+    background-image: linear-gradient($deg, $colors...);
+}
+
+//This mixin creates a border with a specified color and height.
+@mixin border($color, $height:1) {
+    border: $height+px solid $color;
+}

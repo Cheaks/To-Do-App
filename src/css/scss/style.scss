@@ -1,0 +1,112 @@
+@use "./helpers/mixin" as mix;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$mainColor: #de3163;
+$secondaryColor: #ffedfa;
+$thirdColor: #ccdf92;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+.container {
+  width: min-content;
+  margin: 48px;
+  h1 {
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  .taskAdder {
+    .taskhandle {
+      @include mix.flexMode();
+      background-color: #f5f5f5;
+      width: min-content;
+      padding-left: 16px;
+      border-radius: 24px;
+    }
+    input[type="text"] {
+      border: 0;
+      outline: 0;
+      background-color: transparent;
+      color: #09122c;
+    }
+    .addBtn {
+      background-color: $mainColor;
+      color: white;
+      padding: 8px 32px;
+      border-radius: 24px;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      &:hover {
+        background-color: #df5c81;
+      }
+    }
+    .radioGroup {
+      display: flex;
+      gap: 18px;
+      margin-top: 16px;
+      div{
+        position: relative;
+        font-size: smaller;
+        text-transform: capitalize;
+        
+        input{
+            display: none;
+        }
+        label{
+            cursor: pointer;
+            background-color: #f5f5f5;
+            padding: 8px 16px;
+            user-select: none;
+            border-radius: 16px;
+        }
+        input:checked + label{
+            background-color: $mainColor;
+            color: #ffedfa;
+        } 
+      }
+    }
+  }
+}
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  gap: 8px;
+}
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+
+  .taskCheck {
+    @include mix.dementions(20px, 20px);
+    border-radius: 50%;
+    border: 2px solid gainsboro;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  .taskDelete {
+    color: gainsboro;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: auto;
+  }
+  .taskTitle {
+    font-size: 14px;
+    color: #09122c;
+    text-transform: capitalize;
+    user-select: none;
+  }
+}
+.checked {
+  @include mix.flexMode;
+  background-color: $mainColor;
+  border: 2px solid $mainColor !important;
+  color: white;
+}
